@@ -61,11 +61,20 @@ class DAOEntity:
         finally:
             conn.close()
         # Consultar pelo ID
-        pass
 
-    def update(self, task):
+    def update(self, livro):
+        conn = get_connection()
+        
+        try:
+            cursor = conn.cursor()
+            cursor.execute(
+                "UPDATE livro SET titulo = ?, autor = ? WHERE id = ?",
+                (livro.titulo, livro.autor, livro.id)
+                )
+            conn.commit()
+        finally:
+            conn.close()
         # Atualizar
-        pass
 
     def delete(self, task_id):
         # Excluir

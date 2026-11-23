@@ -30,8 +30,16 @@ class Services:
             raise ValueError("Registro não encontrado")
         return livro
 
-    def update(self, task_id, title, description):
-        pass
+    def update(self, livro_id, titulo, autor):
+        livro_existente = self.get(livro_id)
+        
+        if not titulo or not titulo.strip():
+            raise ValueError("O titulo do livro e obrigatorio.")
+        
+        livro_existente.titulo = titulo.strip()
+        livro_existente.autor = autor.strip()
+        
+        self.repository.update(livro_existente)
 
     def delete(self, task_id):
         pass

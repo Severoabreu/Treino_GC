@@ -42,8 +42,14 @@ class UI:
                     f = self.services.get(livro_id)
                     situacao = "lido" if f.lido else "Não lido"
                     print(f"ID: {f.id} | Título: {f.titulo} | autor: {f.autor} | Situação: {situacao}")
-                    
-                            
+                
+                elif opcao == "4":
+                    livro_id = int(input("Informe o ID do livro: "))
+                    titulo = input("Novo título do livro: ")
+                    autor = input("Novo autor do livro: ")
+                    self.services.update(livro_id, titulo, autor)
+                    print("Livro atualizado com sucesso!")
+                                            
                         
                         
                         
