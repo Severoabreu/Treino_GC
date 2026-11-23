@@ -50,7 +50,10 @@ class UI:
                     self.services.update(livro_id, titulo, autor)
                     print("Livro atualizado com sucesso!")
                                             
-                        
+                elif opcao == "5":
+                    livro_id = int(input("Informe o ID do livro: "))
+                    self.services.delete(livro_id)
+                    print("Livro excluído com sucesso!")       
                         
                         
                     

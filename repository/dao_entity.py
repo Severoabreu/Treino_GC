@@ -76,6 +76,15 @@ class DAOEntity:
             conn.close()
         # Atualizar
 
-    def delete(self, task_id):
-        # Excluir
+    def delete(self, livro_id):
+        conn = get_connection()
+        
+        try:
+            conn.execute("DELETE FROM livro WHERE id = ?", (livro_id,))
+            conn.commit()
+            
+        finally:
+            conn.close()
+        
+        
         pass
