@@ -1,4 +1,5 @@
 from database.connection import get_connection
+from entities.entity import Entity
 
 class DAOEntity:
 
@@ -17,8 +18,29 @@ class DAOEntity:
             conn.close()
 
     def find_all(self):
+        conn = get_connection()
+        
+        try:
+            cursor = conn.execute("SELECT * FROM livro")
+            linhas = cursor.fetchall()
+            
+            livros = []
+            for linha in linhas:
+                livro = Entity(
+                    id = linha["id"],
+                    titulo = linha["titulo"],
+                    autor = linha["autor"],
+                    lido = bool(linha["lido"])
+                )
+                
+                livros.append(livro)
+            
+            return livros
+        
+        finally:
+            conn.close()
         # Consultar todas as entidades
-        pass
+        
 
     def find_by_id(self, task_id):
         # Consultar pelo ID

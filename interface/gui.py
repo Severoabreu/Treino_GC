@@ -8,6 +8,7 @@ class UI:
     def show_principal_menu(self):
         
         while True:
+            print("\n=== CATÁLOGO DE livros ===")
             print("1 - Cadastrar livro")
             print("2 - Listar livro")
             print("3 - Consultar livro")
@@ -25,6 +26,20 @@ class UI:
                     autor = input("Nome do autor: ")
                     novo_id = self.services.create(titulo, autor)
                     print(f"Livro cadastrado com sucesso! ID gerado: {novo_id}")
+                    
+                elif opcao == "2":
+                    livro = self.services.list()
+                    if not livro:
+                        print("Não há livros cadastrados no sistema.")
+                    else :
+                        print("-- Listas de livros --")
+                        for f in livro:
+                            situacao = "lido" if f.lido else "Não lido"
+                            print(f"ID: {f.id} | Título: {f.titulo} | autor: {f.autor} | Situação: {situacao}")
+                            
+                        
+                        
+                        
                     
                 elif opcao == "0":
                     print("Saindo...")
