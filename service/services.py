@@ -24,8 +24,11 @@ class Services:
     def list(self):
         return self.repository.find_all()
 
-    def get(self, task_id):
-        pass
+    def get(self, livro_id):
+        livro = self.repository.find_by_id(livro_id)
+        if livro is None:
+            raise ValueError("Registro não encontrado")
+        return livro
 
     def update(self, task_id, title, description):
         pass

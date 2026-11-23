@@ -18,7 +18,7 @@ class UI:
             print("7 - Marcar livro como não assistido")
             print("0 - sair")
             
-            opcao = input("Escolha uma opção").strip()
+            opcao = input("Escolha uma opção ").strip()
             
             try:
                 if opcao == "1":
@@ -36,6 +36,13 @@ class UI:
                         for f in livro:
                             situacao = "lido" if f.lido else "Não lido"
                             print(f"ID: {f.id} | Título: {f.titulo} | autor: {f.autor} | Situação: {situacao}")
+                            
+                elif opcao == "3":
+                    livro_id = int(input("Informe o ID do livro: "))
+                    f = self.services.get(livro_id)
+                    situacao = "lido" if f.lido else "Não lido"
+                    print(f"ID: {f.id} | Título: {f.titulo} | autor: {f.autor} | Situação: {situacao}")
+                    
                             
                         
                         
